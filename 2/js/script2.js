@@ -6,14 +6,16 @@ if (Number(firstYear).toString() != 'NaN' && firstYear != '') {
     if (Number(lastYear).toString() != 'NaN' && lastYear != '') {
         lastYear = Number(lastYear);
         if (firstYear < lastYear) {
-            let year = 2020;
-            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-                alert('год високосный');
-            } else {
-                alert('не високосный');
+            let yearList = [];
+            for (i = firstYear; i <= lastYear; i++) {
+                if ((i % 4 == 0 && i % 100 != 0) || (i % 400 == 0)) {
+                    yearList.push(i);
+                }
             }
+            alert(yearList);
         } else {
-            alert('Числа равны');
+            alert('Конечный год больше первоночального');
+            location.reload();
         }
     } else {
         alert('второе значение не является числом');
