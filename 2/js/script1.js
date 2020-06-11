@@ -1,8 +1,9 @@
 let firstNumber = promptInt('Введите первое число');
+console.log(firstNumber, typeof(firstNumber));
 
-if (firstNumber != false) {
+if (firstNumber !== null) {
   let secondNumber = promptInt('Введите второе число');
-  if (secondNumber != false) {
+  if (secondNumber !== null) {
     if (firstNumber > secondNumber) {
       alert('Первое число больше второго');
     } else if (firstNumber < secondNumber) {
@@ -20,4 +21,8 @@ if (firstNumber != false) {
 }
 
 
-
+if (variable) {
+  Норм
+} else {
+  Хер
+}

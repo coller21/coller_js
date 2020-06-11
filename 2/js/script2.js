@@ -1,8 +1,8 @@
 let firstYear = promptInt('Введите начальный год');
 
-if (firstYear != false) {
+if (firstYear !== null) {
   let lastYear = promptInt('Введите конечный год');
-  if (lastYear != false) {
+  if (lastYear !== null) {
     if (firstYear < lastYear) {
       let yearList = [];
       for (i = firstYear; i <= lastYear; i = i+4) {
