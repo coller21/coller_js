@@ -1,32 +1,37 @@
-// function randomInteger(min, max) {
-//   let rand = min + Math.random() * (max + 1 - min);
-//   return Math.floor(rand);
-// }
-
-// let goBot = (num) => {
-//   if (num === null) {
-//     alert('Game Over');
-//   } else {
-//     if (Number(num).toString() != 'NaN' && num != '') {
-//       numUser = Number(num);
-//       if (numUser > randomNumber) {
-//         alert('Меньше');
-//         let numberUser = prompt('Введите число');
-//         setTimeout(goBot(numberUser), 0);
-//       } else if (numUser < randomNumber) {
-//         alert('Больше');
-//         let numberUser = prompt('Введите число');
-//         setTimeout(goBot(numberUser), 0);
-//       } else {
-//         alert('Правильно');
-//       }
-//     } else {
-//       alert('Введите число')
-//       let numberUser = prompt('Введите число');
-//       setTimeout(goBot(numberUser), 0);
-//     }
-//   }
-// }
+let randomNumber = Math.round(Math.random() * 1000);
+let counterTry = 0;
+let goBot = (num) => {
+  if (num === null) {
+    alert('Game Over');
+  } else {
+    if (counterTry < 10) {
+      if (Number(num).toString() != 'NaN' && num != '') {
+        numUser = Number(num);
+        if (numUser > randomNumber) {
+          counterTry++;
+          alert('Меньше');
+          let numberUser = prompt('Введите число');
+          goBot(numberUser);
+        } else if (numUser < randomNumber) {
+          counterTry++;
+          alert('Больше');
+          let numberUser = prompt('Введите число');
+          goBot(numberUser);
+        } else {
+          alert('Правильно');
+        }
+      } else {
+        let numberUser = prompt('Введите число');
+        goBot(numberUser);
+      }
+    } else {
+      alert('Количество попыток превышено');
+      startGame = confirm('Вы хотите начать игру?');
+      counterTry = 0;
+      goBot();
+    }
+  }
+}
 
 (function () {
   let startGame = confirm('Вы хотите начать игру?');

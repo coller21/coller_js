@@ -12,18 +12,18 @@ let goBot = (num) => {
       if (numUser > randomNumber) {
         alert('Меньше');
         let numberUser = prompt('Введите число');
-        setTimeout(goBot(numberUser), 0);
+        goBot(numberUser)
       } else if (numUser < randomNumber) {
         alert('Больше');
         let numberUser = prompt('Введите число');
-        setTimeout(goBot(numberUser), 0);
+        goBot(numberUser)
       } else {
         alert('Правильно');
       }
     } else {
       alert('Введите число')
       let numberUser = prompt('Введите число');
-      setTimeout(goBot(numberUser), 0);
+      goBot(numberUser)
     }
   }
 }
