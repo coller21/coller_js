@@ -1,3 +1,5 @@
+(function () {
+let startGame = confirm('Вы хотите начать игру?');
 let randomNumber = Math.round(Math.random() * 1000);
 let counterTry = 0;
 let goBot = (num) => {
@@ -33,10 +35,8 @@ let goBot = (num) => {
   }
 }
 
-(function () {
-  let startGame = confirm('Вы хотите начать игру?');
-
   window.start = function () {
+    goBot();
     return startGame;
   }
 })()
