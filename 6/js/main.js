@@ -6,8 +6,10 @@ function UserList() {
   }
 
   this.getAllUsers = function () {
-    for ( i=0; i <= this.users.length; i++) {
-     console.log(this.users[i]);
+    console.log('Список пользователей:');
+    for ( i = 0; i < this.users.length; i++) {
+     console.log(`Поьзователь №${i+1}`);
+     console.log(`Имя: ${this.users[i].firstName}| Фамилия: ${this.users[i].lastName}| Дата регистрации: ${this.users[i].regDate}`);
     }
   }
 }
@@ -16,23 +18,18 @@ function User(firstName, lastName) {
   this.firstName = firstName;
   this.lastName = lastName;
   let myDate = new Date();
-  this.regDate = ('0' + myDate.getDate()).slice(-2) + '-'
-    + ('0' + (myDate.getMonth() + 1)).slice(-2) + '-'
-    + myDate.getFullYear() + " | "
-    + ('0' + myDate.getHours()).slice(-2) + ':'
-    + ('0' + myDate.getMinutes()).slice(-2);
-
+  this.regDate = moment().locale('ru').format('LLL')
 }
 
 let emptyUserList = new UserList();
 let dialogWindow = prompt('Введите имя и фамилию');
 
 while (dialogWindow !== null) {
-  if (dialogWindow == '') {
-    alert('Вы ничего не ввели');
+  let splitString = (dialogWindow.trim() || '').split(' ', 2);
+  if (splitString[1] == undefined) {
+    alert (`Вы не ввели фамилию`);
     dialogWindow = prompt('Введите имя и фамилию');
   }
-  let splitString = dialogWindow.split(' ', 2);
   let newUser = new User(splitString[0], splitString[1]);
   emptyUserList.add(newUser);
   dialogWindow = prompt('Введите имя и фамилию');
