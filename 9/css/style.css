@@ -26,3 +26,11 @@ li {
 button {
   margin-left: 30px;
 }
+
+.line-text {
+  text-decoration: line-through;
+}
+
+.inserted-list-item {
+  cursor: pointer;
+}
