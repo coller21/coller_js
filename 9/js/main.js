@@ -35,17 +35,19 @@ document
   .addEventListener('dblclick', function (ev) {
     if (!ev.target.classList.contains('inserted-list-item')) return;
     let textItem = ev.target.textContent;
-    ev.target.innerHTML = `<input onchange="save()" class="form-control edit-field" type="text" value="${textItem}">`;
+    let newInput = document.createElement('input');
+    newInput.classList.add('form-control');
+    newInput.classList.add('edit-field');
+    newInput.setAttribute('value', textItem);
+    newInput.setAttribute('type', 'text');
+    ev.target.innerHTML = '';
+    ev.target.append(newInput);
+    newInput.focus();
+    document.querySelector('.edit-field').addEventListener('change', function (ev) {
+      let parrentPr1 = ev.target.parentNode;
+      parrentPr1.innerHTML = ev.target.value;
+      if (ev.target.value == '') parrentPr1.remove();
+      inputFocus.focus();
+    });
   });
 
-
-// function save() {
-//   let changeField = document.querySelector('.form-control .edit-field').value;
-//   console.log(changeField);
-
-// }
-  // document
-  // .querySelector('form-control edit-field')
-  // .addEventListener('change', function (ev){
-  //   alert(ev.target.querySelector('.form-control edit-field').value);
-  // });
