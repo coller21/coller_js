@@ -1,0 +1,36 @@
+* {
+  background-origin: border-box;
+}
+
+ul, ol {
+  padding: 0;
+}
+li {
+  width: 500px;
+  margin-bottom: 10px;
+}
+
+.main-container {
+  background-color: #ddd;
+  border-radius: 12px;
+}
+
+.item {
+  padding-left: 50px;
+}
+
+.df {
+  display: flex;
+}
+
+button {
+  margin-left: 30px;
+}
+
+.line-text {
+  text-decoration: line-through;
+}
+
+.inserted-list-item {
+  cursor: pointer;
+}
