@@ -16,15 +16,13 @@
   <div class="container main-container">
     <div class="row">
       <div class="col-md-12 item">
-        <h1>Список задач</h1>
+        <form id="form" class="df">
+          <input id="input" type="text" class="form-control" style="width: 500px;" tabindex="1" placeholder="Введите задачу">
+          <button type="submit" class="btn btn-success" tabindex="-1">Добавить</button>
+        </form>
         <hr>
+        <h1>Список задач</h1>
         <ol class="task-list">
-          <li id="input_field">
-            <form id="form" class="df">
-              <input id="input" type="text" class="form-control" style="width: 500px; margin: 0;">
-              <button type="submit" class="btn btn-success">Добавить</button>
-            </form>
-          </li>
         </ol>
       </div>
     </div>
