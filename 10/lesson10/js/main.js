@@ -15,6 +15,9 @@ let doArray = (nowDate, insertedText) => {
 }
 
 let doSelect = () => {
+  while (selectList.firstChild) {
+    selectList.firstChild.remove();
+  }
   for (elem in textField) {
     let newOption = new Option(new Date(textField[elem].date).toLocaleDateString() + ' | ' +
     new Date(textField[elem].date).toLocaleTimeString() + ' - ' + textField[elem].text, textField[elem].text);
@@ -42,9 +45,6 @@ editField.addEventListener('click', function () {
 saveField.addEventListener('click', function () {
   document.querySelectorAll('.btn-grupe .check').forEach(element => element.toggleAttribute('disabled'));
   field.toggleAttribute('contenteditable');
-  while (selectList.firstChild) {
-    selectList.firstChild.remove();
-  }
   doArray(new Date(), field.innerHTML)
   doSelect();
 })
