@@ -6,10 +6,15 @@ const selectList = document.querySelector('.change-list');
 const textField = JSON.parse(localStorage.getItem('text'));
 let arrayToLocal = [];
 
+let doArray = (nowDate, insertedText) => {
+  let objectData = {};
+  objectData.date = nowDate;
+  objectData.text = insertedText;
+  arrayToLocal.push(objectData);
+  localStorage.setItem('text', JSON.stringify(arrayToLocal));
+}
+
 let doSelect = () => {
-  while (selectList.firstChild) {
-    selectList.firstChild.remove();
-  }
   for (elem in textField) {
     let newOption = new Option(new Date(textField[elem].date).toLocaleDateString() + ' | ' +
     new Date(textField[elem].date).toLocaleTimeString() + ' - ' + textField[elem].text, textField[elem].text);
@@ -29,14 +34,6 @@ if (!textField) {
   doSelect();
 }
 
-let doArray = (nowDate, insertedText) => {
-  let objectData = {};
-  objectData.date = nowDate;
-  objectData.text = insertedText;
-  arrayToLocal.push(objectData);
-  localStorage.setItem('text', JSON.stringify(arrayToLocal));
-}
-
 editField.addEventListener('click', function () {
   field.toggleAttribute('contenteditable');
   document.querySelectorAll('.btn-grupe .check').forEach(element => element.toggleAttribute('disabled'));
@@ -45,6 +42,9 @@ editField.addEventListener('click', function () {
 saveField.addEventListener('click', function () {
   document.querySelectorAll('.btn-grupe .check').forEach(element => element.toggleAttribute('disabled'));
   field.toggleAttribute('contenteditable');
+  while (selectList.firstChild) {
+    selectList.firstChild.remove();
+  }
   doArray(new Date(), field.innerHTML)
   doSelect();
 })
@@ -52,5 +52,5 @@ saveField.addEventListener('click', function () {
 cancelField.addEventListener('click', function () {
   document.querySelectorAll('.btn-grupe .check').forEach(element => element.toggleAttribute('disabled'));
   field.toggleAttribute('contenteditable');
-  field.innerHTML = localStorage.getItem('text');
+  field.innerHTML = textField[textField.length-1].text;
 })
