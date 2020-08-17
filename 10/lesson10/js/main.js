@@ -10,9 +10,9 @@ let doSelect = () => {
   while (selectList.firstChild) {
     selectList.firstChild.remove();
   }
-  for (elem in textField) {
-    let newOption = new Option(new Date(textField[elem].date).toLocaleDateString() + ' | ' +
-    new Date(textField[elem].date).toLocaleTimeString() + ' - ' + textField[elem].text, textField[elem].text);
+  for (elem in arrayToLocal) {
+    let newOption = new Option(new Date(arrayToLocal[elem].date).toLocaleDateString() + ' | ' +
+    new Date(arrayToLocal[elem].date).toLocaleTimeString() + ' - ' + arrayToLocal[elem].text, arrayToLocal[elem].text);
     selectList.append(newOption);
   }
 }
