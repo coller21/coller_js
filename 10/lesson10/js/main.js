@@ -52,5 +52,6 @@ saveField.addEventListener('click', function () {
 cancelField.addEventListener('click', function () {
   document.querySelectorAll('.btn-grupe .check').forEach(element => element.toggleAttribute('disabled'));
   field.toggleAttribute('contenteditable');
-  field.innerHTML = textField[textField.length-1].text;
+  let lastArray = JSON.parse(localStorage.getItem('text'));
+  field.innerHTML = lastArray[lastArray.length-1].text;
 })
